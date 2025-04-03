@@ -22,7 +22,7 @@ export class SearchFormComponent implements OnInit {
     id_dipartimento: null, // ID del dipartimento
     id_location: null, // ID della location
     id_country: null, // ID del paese
-    nome_employee: '', // Nome del dipendente
+    nome_employee: null, // Nome del dipendente
     id_region: null, // ID della regione
     max_salary: null, // Massimo stipendio
     min_salary: null // Minimo stipendio
@@ -34,7 +34,6 @@ export class SearchFormComponent implements OnInit {
   countries: Country[] = []; //dichiarazione array di tipo Country
   locations: Locations[] = []; //dichiarazione array di tipo Location
   employees: Employee[] = []; //dichiarazione array di tipo Employee
-
   //prendo i dati dal servizio
   constructor(private employeeService: EmployeeService) {console.log('EmployeeService inizializzato');} // Log per debug 
 
@@ -88,19 +87,19 @@ export class SearchFormComponent implements OnInit {
         console.error('Errore nel recupero dati location', error); //gestione errore
       }
     });
-    
-    this.employeeService.getAllEmployees().subscribe({
-      next: (data) => {
-        this.employees = data; //carico i dati nel array employee
-      },
-      error: (error) => {
-        console.error('Errore nel recupero dati employee', error); //gestione errore
-      }
-    });
+
   }
 
   onSubmit() {
-    
+  this.employeeService.searchEmployees(this.dati_form).subscribe({
+    next: (response) => {
+      console.log('Risultati della ricerca:', response); // Log dei risultati
+      this.employees = response; // Aggiorna i risultati
+    },
+    error: (error) => {
+      console.error('Errore durante la ricerca , dipendenti non ritornati:', error); // Gestione errore
+    }
+  });
   }
 
 }

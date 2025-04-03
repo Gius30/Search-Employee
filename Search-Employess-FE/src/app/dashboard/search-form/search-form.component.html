@@ -8,6 +8,7 @@
                     <option *ngFor="let department of departments" [value]="department.id">
                         {{ department.department_name }}
                     </option>
+                    <option value="null">Nessun Dipartimento</option>
                 </select>
             </div>
             <div class="col-md-4">
@@ -16,6 +17,7 @@
                     <option *ngFor="let loc of locations" [value]="loc.id">
                         {{ loc.name_loc }}
                     </option>
+                    <option value="null">Nessuna Location</option>
                 </select>
             </div>
             <div class="col-md-4">
@@ -24,6 +26,7 @@
                     <option *ngFor="let coun of countries" [value]="coun.id">
                         {{ coun.country_name }}
                     </option>
+                    <option value="null">Nessun Paese</option>
                 </select>
             </div>
         </div>
@@ -39,6 +42,7 @@
                     <option *ngFor="let reg of regions" [value]="reg.id">
                         {{ reg.region_name }}
                     </option>
+                    <option value="null">Nessuna Regione</option>
                 </select>
             </div>
             <div class="col-md-4">

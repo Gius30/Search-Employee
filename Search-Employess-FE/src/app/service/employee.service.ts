@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from '../models/employee.model';
@@ -31,6 +31,19 @@ export class EmployeeService {
   }
   getAllRegions():Observable<Region[]> {
     return this.http.get<Region[]>(`${baseUrl}/regions`);
+  }
+
+  searchEmployees(dati_form: any): Observable<Employee[]> {
+    const params = new HttpParams()
+        .set('id_dipartimento', dati_form.id_dipartimento?.toString() || '')
+        .set('id_location', dati_form.id_location?.toString() || '')
+        .set('id_country', dati_form.id_country?.toString() || '')
+        .set('nome_employee', dati_form.nome_employee || '')
+        .set('id_region', dati_form.id_region?.toString() || '')
+        .set('max_salary', dati_form.max_salary?.toString() || '')
+        .set('min_salary', dati_form.min_salary?.toString() || '');
+    
+    return this.http.get<Employee[]>(`${baseUrl}/search`, { params }); 
   }
 
 }
