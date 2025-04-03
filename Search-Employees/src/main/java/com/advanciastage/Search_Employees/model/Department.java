@@ -8,7 +8,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Department")
+@Table(name = "Departments")
 public class Department {
 	@Id
 	@Column(name = "DEPARTMENT_ID")
@@ -16,7 +16,7 @@ public class Department {
 	@Column(name ="DEPARTMENT_NAME")
 	private String Department_name;
 	@ManyToOne
-	@JoinColumn(name="LOCATIONS")
+	@JoinColumn(name="LOCATION_ID")
 	private Location location;
 	public Long getId() {
 		return id;

@@ -13,20 +13,22 @@ public class Countries {
 	
 	@Id
 	@Column(name ="COUNTRY_ID")
-	private Long id;
+	private String id;
 	
 	@Column(name="COUNTRY_NAME")
 	private String country_name;
 	
 	@ManyToOne
-	@JoinColumn(name ="REGIONS")
+	@JoinColumn(name ="REGION_ID")
 	private Regions regions;
 
-	public Long getId() {
+	
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

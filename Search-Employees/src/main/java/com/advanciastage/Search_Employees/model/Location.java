@@ -8,7 +8,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="LOCATION")
+@Table(name="LOCATIONS")
 public class Location {
 	
 	@Id
@@ -19,7 +19,7 @@ public class Location {
 	private String city;
 	
 	@ManyToOne
-	@JoinColumn(name="COUNTRIES")
+	@JoinColumn(name="COUNTRY_ID")
 	private Countries countries;
 
 	public Long getId() {

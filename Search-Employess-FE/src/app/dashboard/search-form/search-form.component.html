@@ -1,1 +1,86 @@
-<p>search-form works!</p>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Search Employees</h2>
+    <form (ngSubmit)="onSubmit()" class="p-4 border rounded shadow-sm bg-light">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label for="department" class="form-label">Dipartimento:</label>
+                <select id="department" class="form-select" [(ngModel)]="dati_form.id_dipartimento" name="department">
+                    <option *ngFor="let department of departments" [value]="department.id">
+                        {{ department.department_name }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="location" class="form-label">Location:</label>
+                <select id="location" class="form-select" [(ngModel)]="dati_form.id_location" name="location">
+                    <option *ngFor="let loc of locations" [value]="loc.id">
+                        {{ loc.name_loc }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="Countries" class="form-label">Country:</label>
+                <select id="Country" class="form-select" [(ngModel)]="dati_form.id_country" name="country">
+                    <option *ngFor="let coun of countries" [value]="coun.id">
+                        {{ coun.country_name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row g-3 mt-3">
+            <div class="col-md-4">
+                <label for="name" class="form-label">Nome Dipendente:</label>
+                <input type="text" class="form-control" id="name" placeholder="Nome Dipendente"
+                    [(ngModel)]="dati_form.nome_employee" name="name">
+            </div>
+            <div class="col-md-4">
+                <label for="region" class="form-label">Regione:</label>
+                <select id="region" class="form-select" [(ngModel)]="dati_form.id_region" name="region">
+                    <option *ngFor="let reg of regions" [value]="reg.id">
+                        {{ reg.region_name }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="minSalary" class="form-label">Minimo Salario:</label>
+                <input type="number" class="form-control" id="minSalary" placeholder="Minimo Salario"
+                    [(ngModel)]="dati_form.min_salary" name="minSalary">
+            </div>
+        </div>
+        <div class="row g-3 mt-3">
+            <div class="col-md-4">
+                <label for="maxSalary" class="form-label">Massimo Salario:</label>
+                <input type="number" class="form-control" id="maxSalary" placeholder="Massimo Salario"
+                    [(ngModel)]="dati_form.max_salary" name="maxSalary">
+            </div>
+        </div>
+        <div class="row g-3 d-flex align-items-end mt-3">
+            <button type="submit" class="btn btn-primary w-100">Cerca</button>
+        </div>
+    </form>
+    <br>
+    <h2> Tabella dei dipendenti che soddisfano i criteri di ricerca:</h2>
+    <br>
+    <div class="text-center mt-4">
+        <div class="table-responsive" style="max-height: 300px">
+            <table class="table table-bordered table-striped mt-4">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Salario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees">
+                        <td>{{ employee.id }}</td>
+                        <td>{{ employee.first_name }}</td>
+                        <td>{{ employee.salary }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
