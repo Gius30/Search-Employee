@@ -102,4 +102,16 @@ export class SearchFormComponent implements OnInit {
   });
   }
 
+  deleteemployee(employeeId: number) {
+    this.employeeService.DeleteEmployee(employeeId).subscribe({
+      next: (data) => {
+        console.log('Dipendente eliminato con successo:', employeeId); // Log per conferma
+        this.employees = data ;
+      },
+      error: (error) => {
+        console.error('Errore durante l\'eliminazione del dipendente:', error); // Gestione errore
+      }
+    });
+
+  }
 }

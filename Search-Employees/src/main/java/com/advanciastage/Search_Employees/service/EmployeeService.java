@@ -30,5 +30,9 @@ public class EmployeeService {
 		return repo.search(id_dipartimento, id_location, id_country, 
                 nome_employee, id_region, max_salary, min_salary);
 	}
+
+	public void DeleteEmployeebyId(Long id) {
+		repo.deleteById(id);
+	}
 	
 }
