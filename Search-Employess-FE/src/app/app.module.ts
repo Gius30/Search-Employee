@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SearchFormComponent } from './dashboard/search-form/search-form.component';
 import { DetailEmployeeComponent } from './detail-employee/detail-employee.component';
+import { NewEmployeeComponent } from './new-employee/new-employee.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { DetailEmployeeComponent } from './detail-employee/detail-employee.compo
     DashboardComponent,
     SearchFormComponent,
     DetailEmployeeComponent,
+    NewEmployeeComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,7 @@ import com.advanciastage.Search_Employees.service.RegionService;
 @RequestMapping("api")
 @CrossOrigin(origins = "http://localhost:4200")
 public class Dashboard {
+
 	@Autowired
 	private EmployeeService empServ;
 
@@ -43,6 +45,7 @@ public class Dashboard {
 
 	@Autowired
 	private RegionService regServ;
+
 
 	@GetMapping("/countries")
 	public List<Countries> findAllCoun() {
@@ -98,6 +101,11 @@ public class Dashboard {
 	                               @RequestParam String nome, 
 	                               @RequestParam BigDecimal salary) {
 	    return empServ.editEmployee(id, nome, salary);  // Passa i parametri corretti
+	}
+	
+	@PostMapping("/newemployee")
+	public Employees createEmployees(@RequestParam String last_name, @RequestParam BigDecimal salary) {
+		return empServ.createEmp(last_name, salary);
 	}
 	
 

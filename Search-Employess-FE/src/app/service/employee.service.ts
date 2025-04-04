@@ -6,6 +6,7 @@ import { Department } from '../models/department.model';
 import { Country } from '../models/country.model';
 import { Region } from '../models/region.model';
 import { Locations } from '../models/location.model';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 
 const baseUrl = 'http://localhost:8080/api';
@@ -61,6 +62,15 @@ export class EmployeeService {
       .set('salary', salary.toString()); // Assicurati che salary sia una stringa se è un numero
   
     return this.http.put<Employee>(`${baseUrl}/employee/${id}`, null, { params });
+  }
+
+  crateEmployee(nome:any , salary:any): Observable<Employee> {
+    
+    const params = new HttpParams()
+      .set('last_name', nome)
+      .set('salary', salary.toString()); // Assicurati che salary sia una stringa se è un numero
+
+    return this.http.post<Employee>(`${baseUrl}/newemployee`,null, {params});
   }
   
   

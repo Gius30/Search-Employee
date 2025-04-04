@@ -4,9 +4,12 @@ import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,8 +18,8 @@ public class Employees {
 	@Id
 	@Column(name = "EMPLOYEE_ID")
 	//questo mi serve in caso di creazione di un nuovo dipendente , poichè vado a prendere la sequenza per incrementare l'id
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_seq")
-	//@SequenceGenerator(name = "employee_seq", sequenceName = "EMPLOYEES_SEQ", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_seq")
+	@SequenceGenerator(name = "employee_seq", sequenceName = "EMPLOYEES_SEQ", allocationSize = 1)
 	private Long id;
 	
 	@Column(name = " FIRST_NAME")
