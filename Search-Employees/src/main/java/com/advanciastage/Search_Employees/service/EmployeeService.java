@@ -1,6 +1,8 @@
 package com.advanciastage.Search_Employees.service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +36,21 @@ public class EmployeeService {
 	public void DeleteEmployeebyId(Long id) {
 		repo.deleteById(id);
 	}
+
+	
+	/*
+	 * ricorda che se edit_emp non ha id allora verrà creata una nuova entità sennò verrà aggiornata 
+	 * l'entità con l' id corrispondente
+	 */
+	
+	public Optional<Employees> editEmployee(long id, String nome, BigDecimal salary) {
+	        repo.updateEmployeeSalary(id,nome,salary);
+	        return repo.findById(id);
+	    
+	}
+
+	
+	
+
 	
 }

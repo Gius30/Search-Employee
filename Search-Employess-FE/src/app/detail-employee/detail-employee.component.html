@@ -1,9 +1,26 @@
-<div class="employee-details"></div>
+<div class="employee-details">
     <h2 class="employee-title">Dettagli di {{currentEmployee?.first_name}}</h2>
     <div class="employee-info">
         <p><strong>ID Dipendente:</strong> {{currentEmployee?.id}}</p>
         <p><strong>Salario:</strong> {{currentEmployee?.salary | currency:'EUR'}}</p>
     </div>
 
+    <!-- Pulsante per aprire il form -->
+    <button class="btn btn-primary mt-3" (click)="toggleEditForm()">Modifica Dipendente</button>
 
-
+    <!-- Form per modificare il dipendente -->
+    <div *ngIf="isEditing && currentEmployee" class="mt-3">
+        <form (ngSubmit)="updateEmployee()">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">Nome:</label>
+                <input type="text" id="firstName" class="form-control" [(ngModel)]="currentEmployee.first_name" name="firstName">
+            </div>
+            <div class="mb-3">
+                <label for="salary" class="form-label">Salario:</label>
+                <input type="number" id="salary" class="form-control" [(ngModel)]="currentEmployee.salary" name="salary">
+            </div>
+            <button type="submit" class="btn btn-success">Salva</button>
+            <button type="button" class="btn btn-secondary ms-2" (click)="toggleEditForm()">Annulla</button>
+        </form>
+    </div>
+</div>

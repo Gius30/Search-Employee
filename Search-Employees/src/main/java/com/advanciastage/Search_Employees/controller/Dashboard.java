@@ -1,12 +1,15 @@
 package com.advanciastage.Search_Employees.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -88,6 +91,13 @@ public class Dashboard {
 	@GetMapping("/employee/{id}")
 	public Employees DetailEmployee(@PathVariable Long id) {
 		return empServ.find(id);
+	}
+	
+	@PutMapping("/employee/{id}")
+	public Optional<Employees> EditEmployee(@PathVariable long id, 
+	                               @RequestParam String nome, 
+	                               @RequestParam BigDecimal salary) {
+	    return empServ.editEmployee(id, nome, salary);  // Passa i parametri corretti
 	}
 	
 

@@ -1,11 +1,16 @@
 package com.advanciastage.Search_Employees.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.advanciastage.Search_Employees.model.Employees;
+
+
 
 public interface EmployeeRepository extends JpaRepository<Employees, Long> {
 
@@ -17,4 +22,10 @@ public interface EmployeeRepository extends JpaRepository<Employees, Long> {
 			+ "(:min_salary is null or e.salary >= :min_salary)")
 	List<Employees> search(Long id_dipartimento, Long id_location, String id_country, String nome_employee,
 			Long id_region, Double max_salary, Double min_salary);
+	
+	@Modifying
+    @Transactional
+    @Query("update Employees e set e.salary = :newSalary, e.first_name = :nome " + 
+           "where e.id = :employeeId")
+    void updateEmployeeSalary(Long employeeId, String nome, BigDecimal newSalary);
 }

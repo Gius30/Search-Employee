@@ -42,7 +42,6 @@ export class EmployeeService {
         .set('id_region', dati_form.id_region?.toString() || '')
         .set('max_salary', dati_form.max_salary?.toString() || '')
         .set('min_salary', dati_form.min_salary?.toString() || '');
-    
     return this.http.get<Employee[]>(`${baseUrl}/search`, { params }); 
   }
 
@@ -53,6 +52,17 @@ export class EmployeeService {
   getEmployee(id:any): Observable<Employee>{
     return this.http.get<Employee>(`${baseUrl}/employee/${id}`);
   }
+
+  updateEmployee(id: any, nome: any, salary: any): Observable<Employee> {
+    console.log(`Updating employee ${id} with nome: ${nome} and salary: ${salary}`);
+  
+    const params = new HttpParams()
+      .set('nome', nome)
+      .set('salary', salary.toString()); // Assicurati che salary sia una stringa se è un numero
+  
+    return this.http.put<Employee>(`${baseUrl}/employee/${id}`, null, { params });
+  }
+  
   
 
 }
