@@ -1,1 +1,9 @@
-<p>detail-employee works!</p>
+<div class="employee-details"></div>
+    <h2 class="employee-title">Dettagli di {{currentEmployee?.first_name}}</h2>
+    <div class="employee-info">
+        <p><strong>ID Dipendente:</strong> {{currentEmployee?.id}}</p>
+        <p><strong>Salario:</strong> {{currentEmployee?.salary | currency:'EUR'}}</p>
+    </div>
+
+
+

@@ -6,7 +6,7 @@ import { DetailEmployeeComponent } from './detail-employee/detail-employee.compo
 const routes: Routes = [
  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
  {path: 'dashboard', component: DashboardComponent},
- {path: 'Employee/:id', component: DetailEmployeeComponent}
+ { path: 'employee/:id', component: DetailEmployeeComponent }
 ];
 
 @NgModule({
